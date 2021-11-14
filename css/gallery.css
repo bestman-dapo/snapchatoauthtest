@@ -1,0 +1,28 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+.picture-gallery{
+    background-color: #dbddf1;
+    padding: 80px 0;
+}
+.picture-gallery img{
+    background-color: #ffffff;
+    padding: 15px;
+    width: 100%;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+}
+img{
+    max-width: 100%;
+}
+#gallery-modal .modal-img{
+    width: 100%;
+}
+
+@media (max-width: 600px){
+    .modal-dialog{
+        width: 500px;
+    }
+}

@@ -1,0 +1,167 @@
+*{
+    box-sizing: border-box;
+    
+}
+body{
+    margin: 0 !important;
+    padding: 0 !important;
+    position: relative;
+}
+.form-container{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(102, 102, 61);
+}
+.login_welcome{
+    font-size: 18px;
+    text-align: center;
+    margin-bottom: 30px;
+}
+.login-wrapper{
+    width: 300px;
+    margin: 0 auto;
+    padding: 20px;
+    padding-top: 30px;
+    border-radius: 7px;
+    box-shadow: 0 5px 10px #333;
+    background-color: white;
+}
+.login-wrapper input{
+    margin-bottom: 15px;
+}
+.login-submit{
+    width: 100px;
+    transform: translateX(80px);
+    margin-top: 20px;
+}
+.divider{
+    width: 10px;
+    margin: 0 auto;
+    margin-top: 40px;
+    position: relative;
+}
+.divider::after{
+    content: '';
+    position: absolute;
+    top: 13px;
+    left: -80px;
+    width: 70px;
+    height: 1px;
+    background-color: #555;
+}
+.divider::before{
+    content: '';
+    position: absolute;
+    top: 13px;
+    right: -85px;
+    width: 70px;
+    height: 1px;
+    background-color: #555;
+}
+.cashtokenlink{
+    text-decoration: none;
+    width: 240px;
+    margin: 0 auto;
+    margin-top: 30px;
+    font-size: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #555;
+}
+.cashtokenlink img{
+    width: 25px;
+    height: 25px;
+    margin-left: 15px;
+    margin-right: 10px;
+}
+
+
+.profile-row{
+    margin-top: 20px !important;
+}
+
+.profile-header{
+    height: 60px; 
+    width: 100%; 
+    background: purple;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.login_submit{
+    /* width: 100% !important; */
+    margin: 10px 0 20px 0;
+    width: 150px !important;
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    transform: translateX(55px);
+    /* padding: 5px 10px !important; */
+}
+.snapverify-submit img{
+    height: 30px;
+    border-radius: 5px;
+    margin-right: 5px;
+}
+.snapverify-submit p{
+    margin-top: 15px;
+    margin-left: 10px;
+}
+.index-header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 70px;
+    padding: 0 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100 !important;
+    font-size: 30px;
+    color: white;
+    background: rgba(0, 0, 0, 0.3);
+}
+.index-header .logo{
+    color: wheat;
+    font-size: 35px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    cursor: pointer;
+}
+.index-header-link:hover{
+    color: rgb(89, 89, 238) !important;
+}
+#myVideo{
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+}
+.blurr{
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+}
+.welcome-div{
+    transform: translateY(350px);
+    width: 700px;
+    margin: 0 auto;
+    font-size: 30px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.welcome-div h1{
+    font-size: 50px;
+}
+
