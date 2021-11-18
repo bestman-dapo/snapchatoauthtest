@@ -73,7 +73,7 @@ body{
     color: #555;
 }
 .cashtokenlink img{
-    width: 25px;
+    width: 30px;
     height: 25px;
     margin-left: 15px;
     margin-right: 10px;
@@ -104,6 +104,7 @@ body{
 }
 .snapverify-submit img{
     height: 30px;
+    width: 30px;
     border-radius: 5px;
     margin-right: 5px;
 }

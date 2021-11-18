@@ -1,4 +1,6 @@
-
+<?php
+  session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,26 +19,29 @@
     
     
 <?php
-$client_id = "8c1302cb-3070-47e5-a6d8-4f26b5675bab";
+$client_id = "43322312295-5qb7akajbej66dei13qs59loqop09u8l";
+$snap_client_id = '6657a894-7ddc-49a4-902e-94240dbb6577';
+// $client_id = "43322312295-5qb7akajbej66dei13qs59loqop09u8l";
 $authorizeURL = "https://accounts.snapchat.com/accounts/oauth2/auth";
 
 $tokenURL =
-'https://id-sandbox.cashtoken.africa/oauth/token';
+"https://accounts.snapchat.com/accounts/oauth2/token";
 
 // $APIurlBASE = "https://id-sandbox.cashtoken.africa";
-
+// $authorizeURL = 'https://accounts.google.com/o/oauth2/v2/auth';
+  
+// $tokenURL =
+// 'https://www.googleapis.com/oauth2/v4/token';
 
 
 $baseURL = 'http://localhost/snapchatoauthtest/index.php';
 // echo $baseURL;
 
 
-session_start();
 
 
-if (isset($_GET['sign-out'])) {
-  session_destroy();
-}
+
+
 
 
 ////Make a request to endpoint server for Access Token Request
@@ -44,22 +49,25 @@ if (isset($_GET['sign-out'])) {
 ////Make a request to endpoint server for Access Token Request
   if(isset($_GET['code'])) {
     // Verify the state matches our stored state
-    if(!isset($_GET['state'])
-      || $_SESSION['state'] != $_GET['state']) {
+    if (isset($_GET['prompt'])) {
+      if(!isset($_GET['state'])) {
    
       header('Location: ' . $baseURL . '?error=invalid_state');
       die();
     }
   
     $authorization_code = $_GET['code'];
-    $client_secret = $_GET['state'];
+    $state = $_GET['state'];
    // Exchange the auth code for an access token
     $fields = [
         'grant_type' => 'authorization_code',
         'client_id' => $client_id,
+        'client_secret' => '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',
         'redirect_uri' => $baseURL,
-        'state' => $client_secret,
-        'code_verifier'=> $_SESSION['code_verifier'],
+        'state' => $state,
+        // 'code_verifier'=> $_SESSION['code_verifier'],
+        // 'code_challenge' => $_SESSION['code_challenge'],
+        // 'code_challenge_method'=> 'S256',
         'code' => $authorization_code
     ];
     $fileds_string = http_build_query($fields);
@@ -69,7 +77,72 @@ if (isset($_GET['sign-out'])) {
    );
 
     $ch = curl_init();
-    curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+    // curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+    curl_setopt($ch, CURLOPT_URL, 'https://www.googleapis.com/oauth2/v4/token');
+    curl_setopt($ch, CURLOPT_POST, true);
+    curl_setopt($ch, CURLOPT_POSTFIELDS, $fileds_string);
+
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+    $result = curl_exec($ch);
+    $_SESSION['result'] = $result;
+    $variable = substr($result, 21);
+    $access_token = substr($variable, 0, strpos($variable, '"'));
+    $access_token = str_replace(' ','',$access_token); 
+    $_SESSION['access_token'] = $access_token;
+
+    $refresh_token = strpos($result, 'refresh_token');
+    $refresh = substr($result, $refresh_token);
+    $refresh = ltrim($refresh, 'refresh_token":" ');
+    $refreshs = 'e'.$refresh;
+    $refresh_token = substr($refreshs, 0, strpos($refreshs, '"'));
+    $_SESSION['refresh_token'] = $refresh_token;
+
+    $expires = strpos($result, 'expires_in');
+    $expires = substr( $result, $expires);
+    $expires = ltrim( $expires, 'expires_in":');
+    $expires = substr($expires, 0, strpos($expires, ','));
+    $_SESSION['expires'] = $expires;
+    curl_close($ch);
+
+    echo $result; ?> <br><br> <?php
+    var_dump($_SESSION['access_token']) ; ?> <br><br> <?php
+    // echo $_SESSION['refresh_token']; ?> <br><br> <?php
+    // echo $_SESSION['expires'];
+
+    $_SESSION['google'] = 'active';
+    header('Location: userinfo.php');
+   die();
+    }else {
+      if(!isset($_GET['state'])
+      || $_SESSION['state'] != $_GET['state']) {
+   
+      header('Location: ' . $baseURL . '?error=invalid_state');
+      die();
+    }
+  
+    $authorization_code = $_GET['code'];
+    $state = $_GET['state'];
+   // Exchange the auth code for an access token
+    $fields = [
+        'grant_type' => 'authorization_code',
+        'client_id' => $snap_client_id,
+        'client_secret' => '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',
+        'redirect_uri' => $baseURL,
+        'state' => $state,
+        'code_verifier'=> $_SESSION['code_verifier'],
+        'code_challenge' => $_SESSION['code_challenge'],
+        'code_challenge_method'=> 'S256',
+        'code' => $authorization_code
+    ];
+    $fileds_string = http_build_query($fields);
+
+    $headers = array(
+      "Content-Type: application/x-www-form-urlencoded"
+   );
+
+    $ch = curl_init();
+    // curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
     curl_setopt($ch, CURLOPT_URL, $tokenURL);
     curl_setopt($ch, CURLOPT_POST, true);
     curl_setopt($ch, CURLOPT_POSTFIELDS, $fileds_string);
@@ -77,18 +150,38 @@ if (isset($_GET['sign-out'])) {
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
     $result = curl_exec($ch);
-    $variable = substr($result, 17);
+    $variable = substr($result, 21);
     $access_token = substr($variable, 0, strpos($variable, '"'));
+    $access_token = str_replace(' ','',$access_token); 
     $_SESSION['access_token'] = $access_token;
+
+    $refresh_token = strpos($result, 'refresh_token');
+    $refresh = substr($result, $refresh_token);
+    $refresh = ltrim($refresh, 'refresh_token":" ');
+    $refreshs = 'e'.$refresh;
+    $refresh_token = substr($refreshs, 0, strpos($refreshs, '"'));
+    $_SESSION['refresh_token'] = $refresh_token;
+
+    $expires = strpos($result, 'expires_in');
+    $expires = substr( $result, $expires);
+    $expires = ltrim( $expires, 'expires_in":');
+    $expires = substr($expires, 0, strpos($expires, ','));
+    $_SESSION['expires'] = $expires;
     curl_close($ch);
 
-    header('Location: userinfo.php');
- 
-    
+    // echo $result; ?> <br><br> <?php
+    // var_dump($_SESSION['access_token']) ; ?> <br><br> <?php
+    // echo $_SESSION['refresh_token']; ?> <br><br> <?php
+    // echo $_SESSION['expires'];
 
-   
+
+    header('Location: userinfo.php');
+    
+    
     
     die();
+    }
+    
   }
 
 
@@ -119,7 +212,7 @@ if (!isset($_GET['action'])) {
               
               <div class="welcome-div">
                 <h1>WELCOME TO SPIFFY GALLERY</h1>
-                <h3>Please Sign To Experience The Thrill</h3>
+                <h3>Please Sign In To Experience The Thrill</h3>
                 <p><a style="margin-top: 15px; display: flex; justify-content: center; align-items: center;" class="btn btn-primary " href="login.php">Sign In</a></p>
               </div>
             </div>
@@ -142,53 +235,7 @@ if (!isset($_GET['action'])) {
 // to cashtoken's authorization page
 // Start the login process by sending the user
 // to cashtoken's authorization page
-if(isset($_GET['action']) && $_GET['action'] == 'login') {
-    unset($_SESSION['access_token']);
-    unset($_SESSION['code_verifier']);
-    unset($_SESSION['code_challenge']);
-   
-    $_SESSION['state'] = bin2hex(random_bytes(16));
-    // // $verify_bytes = random_bytes(64);
-    // $code_verifier = bin2hex(random_bytes(30)).'-_~.';
-    // $_SESSION['code_verifier'] = $code_verifier;
-    // $hash = hash('sha256', $code_verifier);
-    // $code_challenge = rtrim(strtr(base64_encode($hash), '+/', '-_'), "=");
-    // $_SESSION['code_challenge'] = $code_challenge;
 
-
-    function base64url_encode($plainText)
-    {
-        $base64 = base64_encode($plainText);
-        $base64 = trim($base64, "=");
-        $base64url = strtr($base64, '+/', '-_');
-        return ($base64url);
-    }
-
-    $random = bin2hex(openssl_random_pseudo_bytes(32));
-    $verifier = base64url_encode(pack('H*', $random));
-    $_SESSION['code_verifier'] = $verifier;
-    $challenge = base64url_encode(pack('H*', hash('sha256', $verifier)));
-    $_SESSION['code_challenge'] = $challenge;
-    $client_secret = base64url_encode(pack('H*', hash('sha256', 'Lcp44WMupWT2_TfYP18AFnnzutB2VmYXGSk9Te5ig7E')));
-    
-
-    $params = array(
-      'response_type' => 'code',
-      // 'grant_type' => 'authorization_code',
-      'client_id' => $client_id,
-      'scope' => 'https://auth.snapchat.com/oauth2/api/user.display_name',
-      'redirect_uri' => 'http://localhost/snapchatoauthtest/index.php',
-      // 'client_secret' => $client_secret,
-      'code_verifier'=> $_SESSION['code_verifier'],
-      'code_challenge' => $_SESSION['code_challenge'],
-      'code_challenge_method'=> 'S256',
-      'state' => $_SESSION['state']
-    );
-   
-    // // // Redirect the user to cashToken's authorization page
-    header('Location: '.$authorizeURL.'?'.http_build_query($params));
-    die();
-  }
 
 
   

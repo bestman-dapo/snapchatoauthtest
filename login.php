@@ -1,3 +1,59 @@
+<?php
+   $client_id = "43322312295-5qb7akajbej66dei13qs59loqop09u8l";
+   $authorizeURL = 'https://accounts.google.com/o/oauth2/v2/auth';
+  
+   $tokenURL = 'https://www.googleapis.com/oauth2/v4/token';
+   $baseURL = 'http://localhost/snapchatoauthtest/index.php';
+
+  if(isset($_GET['action']) && $_GET['action'] == 'google-login') {
+    unset($_SESSION['access_token']);
+    unset($_SESSION['code_verifier']);
+    unset($_SESSION['code_challenge']);
+    
+   
+    // $_SESSION['state'] = bin2hex(openssl_random_pseudo_bytes(16));
+    // $verify_bytes = random_bytes(64);
+    // $code_verifier = bin2hex(random_bytes(30)).'-_~.';
+    // $_SESSION['code_verifier'] = $code_verifier;
+    // $hash = hash('sha256', $code_verifier);
+    // $code_challenge = rtrim(strtr(base64_encode($hash), '+/', '-_'), "=");
+    // $_SESSION['code_challenge'] = $code_challenge;
+  
+  
+    function base64url_encode($plainText)
+    {
+        $base64 = base64_encode($plainText);
+        $base64 = trim($base64, "=");
+        $base64url = strtr($base64, '+/', '-_');
+        return ($base64url);
+    }
+  
+    $random = bin2hex(openssl_random_pseudo_bytes(32));
+    $verifier = base64url_encode(pack('H*', $random));
+    $_SESSION['code_verifier'] = $verifier;
+    $challenge = base64url_encode(pack('H*', hash('sha256', $verifier)));
+    $_SESSION['code_challenge'] = $challenge;
+    $_SESSION['state'] = base64url_encode(hash('sha256', 'Lcp44WMupWT2_TfYP18AFnnzutB2VmYXGSk9Te5ig7E'));
+    
+  
+  
+    $params = array(
+      'client_id' => $client_id,
+      'redirect_uri' => 'http://localhost/snapchatoauthtest/index.php',
+      'response_type' => 'code',
+      'scope' => 'openid email profile',
+      // 'grant_type' => 'authorization_code',
+      
+      'state' => $_SESSION['state'],
+      // 'code_verifier'=> $_SESSION['code_verifier'],
+      // 'code_challenge' => $_SESSION['code_challenge'],
+      // 'code_challenge_method'=> 'S256'
+    );
+   
+    // // // // // Redirect the user to cashToken's authorization page
+    header('Location: '.$authorizeURL.'?'.http_build_query($params));
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,7 +75,7 @@
 
             <div class="form-container">
                 <div class="form-group login-wrapper login_control" >
-                    <h3 class="login_welcome">Welcome To Lotsconnect</h3>
+                    <h3 class="login_welcome">SPIFFY GALLERY</h3>
                     <div class=""></div>
                     
                     <input placeholder="Email" type="email" name="email" class="form-control">
@@ -30,7 +86,8 @@
                     <p class="divider"> or </p>
 
                     
-                    <a href="verify.php" class="cashtokenlink snapverify-submit"><img src="./images/original-88018ccd-f944-427d-9642-d9aa85db2520.jpeg" alt=""> <p>Verify with snapchat</p></a> 
+                    <a href="verify.php" class="cashtokenlink snapverify-submit"><img src="./images/original-88018ccd-f944-427d-9642-d9aa85db2520.jpeg" alt=""> <p>Sign In with snapchat</p></a> 
+                    <a style=" margin-top: -10px;" href="?action=google-login" class="cashtokenlink snapverify-submit"><img style="width: 45px; margin-left: -5px;" src="./images/google-logo.jpg" alt=""> <p style="margin-left: 0;">Sign In with Google</p></a> 
                 </div>
             </div>
             
