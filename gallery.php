@@ -33,6 +33,7 @@
             </div>
             <div class="col">
                 <img src="images/IMG_20211108_091027_192.jpg" class="gallery-item" alt="gallery">
+                <div  class="snapchat-creative-kit-share" data-theme="dark" data-share-url="https://snapchatoauthtest.herokuapp.com/gallery.php"></div>
             </div>
             <div class="col">
                 <img src="images/IMG_20211108_091104_614.jpg" class="gallery-item" alt="gallery">
