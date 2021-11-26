@@ -26,7 +26,7 @@ window.snapKitInit = () => {
         window.localStorage.setItem('username', data["data"]["me"]["displayName"]);
 
         
-        console.log(usersname.innerText);
+        console.log(usersname);
         
 
         window.location.href = "https://snapchatoauthtest.herokuapp.com/gallery.php";
