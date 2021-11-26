@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta property="og:site_name" content="Snapchat" />
     <meta property="og:title" content="The Fastest Way to Share!" />
-    <meta property="snap:sticker" content="https://snapchatoauthtest.herokuapp.com/images/download.jpeg" />
+    <meta property="snap:sticker" content="https://snapchatoauthtest.herokuapp.com/images/download.jpg" />
     <link rel="stylesheet" href="css/gallery.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="./css/bootstrap.min.css">
@@ -27,7 +27,7 @@
         <div class="row gy-4 row-cols-1 row-cols-sm-2 row-cols-md-3">
             <div class="col">
             <img src="images/IMG_20211108_091027_192.jpg" class="gallery-item" alt="gallery">
-            <div  class="snapchat-creative-kit-share" data-theme="dark" data-share-url="https://snapchatoauthtest.herokuapp.com/images/download.jpeg"></div>
+            <div  class="snapchat-creative-kit-share" data-theme="dark" data-share-url="https://snapchatoauthtest.herokuapp.com/images/download.jpg"></div>
             </div>
             <div class="col">
                 <img src="images/IMG_20211108_091023_868.jpg" class="gallery-item" alt="gallery">
