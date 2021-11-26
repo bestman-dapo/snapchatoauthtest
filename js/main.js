@@ -26,7 +26,7 @@ window.snapKitInit = () => {
         window.localStorage.setItem('username', data["data"]["me"]["displayName"]);
 
         
-        users_name = window.localStorage.getItem('username');
+        
         
 
         window.location.href = "https://snapchatoauthtest.herokuapp.com/gallery.php";
@@ -82,3 +82,5 @@ function clearStorage(){
     
     // document.body.innerHTML = '<div class="form-container" id="form-container"><div class="form-group login-wrapper login_control" style="width: auto;" ><h3 class="login_welcome">SPIFFY GALLERY</h3><div class=""></div><input placeholder="Email" type="email" name="email" class="form-control"><input placeholder="Password" type="password" name="password" class="form-control"><p><a style="display: flex; justify-content: center; align-items: center;" class="btn btn-primary " href="#">Sign In</a></p><p class="divider" style="margin-bottom: 20px;"> or </p><div id="login-button"></div><!-- <button id="login-button" style="background-color: yellow; border: none; height: 20px; border-radius:5px;" ><img src="./images/original-88018ccd-f944-427d-9642-d9aa85db2520.jpeg" alt=""> <p>Sign In with snapchat</p></button>  --><!-- <a style=" margin-top: -10px;" href="?action=google-login" class="cashtokenlink snapverify-submit"><img style="width: 45px; margin-left: -5px;" src="./images/google-logo.jpg" alt=""> <p style="margin-left: 0;">Sign In with Google</p></a>  --></div> </div>';
 }
+
+users_name = window.localStorage.getItem('username');
