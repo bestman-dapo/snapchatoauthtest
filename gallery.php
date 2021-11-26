@@ -19,6 +19,7 @@
   
   <div class="index-header-link" style="text-decoration: none; color:white; font-size: 25px;" onClick='clearStorage()'><span class="gallery-signin">Log Out</span></div>
 
+  <div id="usersname"></div>
   
 </div>
 <section class="gallery min-vh-100 picture-gallery">

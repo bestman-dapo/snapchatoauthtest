@@ -21,10 +21,12 @@ window.snapKitInit = () => {
     handleResponseCallback: () => {
       snap.loginkit.fetchUserInfo().then(data => {
 
-        // window.localStorage.setItem('userimage', data["data"]["me"]["bitmoji"]["avatar"]);
-        // window.localStorage.setItem('username', data["data"]["me"]["displayName"]);
+        window.localStorage.setItem('userimage', data["data"]["me"]["bitmoji"]["avatar"]);
+        window.localStorage.setItem('username', data["data"]["me"]["displayName"]);
 
-       
+        var usersname = document.getElementById('usersname');
+
+        usersname.innerText = window.localStorage.getItem('username');
 
         window.location.href = "https://snapchatoauthtest.herokuapp.com/gallery.php";
 
