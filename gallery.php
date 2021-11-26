@@ -29,24 +29,28 @@
         <div class="row gy-4 row-cols-1 row-cols-sm-2 row-cols-md-3">
             <div class="col">
             <img src="images/IMG_20211108_091027_192.jpg" class="gallery-item" alt="gallery">
-                
+            <div  class="snapchat-creative-kit-share" data-theme="dark" data-share-url="https://snapchatoauthtest.herokuapp.com/images/IMG_20211108_091027_192.jpg"></div>
             </div>
             <div class="col">
                 <img src="images/IMG_20211108_091023_868.jpg" class="gallery-item" alt="gallery">
                 
-                <div  class="snapchat-creative-kit-share" data-theme="dark" data-share-url="https://snapchatoauthtest.herokuapp.com/gallery.php"></div>
+                <div  class="snapchat-creative-kit-share" data-theme="dark" data-share-url="https://snapchatoauthtest.herokuapp.com/images/IMG_20211108_091023_868.jpg"></div>
             </div>
             <div class="col">
                 <img src="images/IMG_20211108_091104_614.jpg" class="gallery-item" alt="gallery">
+                <div  class="snapchat-creative-kit-share" data-theme="dark" data-share-url="https://snapchatoauthtest.herokuapp.com/images/IMG_20211108_091104_614.jpg"></div>
             </div>
             <div class="col">
                 <img src="images/IMG_20211108_091107_640.jpg" class="gallery-item" alt="gallery">
+                <div  class="snapchat-creative-kit-share" data-theme="dark" data-share-url="https://snapchatoauthtest.herokuapp.com/images/IMG_20211108_091107_640.jpg"></div>
             </div>
             <div class="col">
                 <img src="images/IMG_20211108_091115_256.jpg" class="gallery-item" alt="gallery">
+                <div  class="snapchat-creative-kit-share" data-theme="dark" data-share-url="https://snapchatoauthtest.herokuapp.com/images/IMG_20211108_091115_256.jpg"></div>
             </div>
             <div class="col">
                 <img src="images/IMG_20211108_091119_950.jpg" class="gallery-item" alt="gallery">
+                <div  class="snapchat-creative-kit-share" data-theme="dark" data-share-url="https://snapchatoauthtest.herokuapp.com/images/IMG_20211108_091119_950.jpg"></div>
             </div>
         </div>
     </div>
