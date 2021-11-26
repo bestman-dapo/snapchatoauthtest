@@ -25,8 +25,8 @@ window.snapKitInit = () => {
         window.localStorage.setItem('username', data["data"]["me"]["displayName"]);
 
         var usersname = document.getElementById('usersname');
-
-        usersname.innerText = window.localStorage.getItem('username');
+        console.log(usersname.innerText);
+        // usersname.innerText = window.localStorage.getItem('username');
 
         window.location.href = "https://snapchatoauthtest.herokuapp.com/gallery.php";
 
