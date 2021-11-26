@@ -20,7 +20,7 @@
   
   <div class="index-header-link" style="text-decoration: none; color:white; font-size: 25px;" onClick='clearStorage()'><span class="gallery-signin">Log Out</span></div>
 
-  <h4 id="usersname">SPIFFY GALLERY</h4>
+  <!-- <h4 id="usersname">SPIFFY GALLERY</h4> -->
   
 </div>
 <section class="gallery min-vh-100 picture-gallery">
