@@ -9,7 +9,7 @@
     <meta property="og:title" content="The Fastest Way to Share!" />
     <!-- <meta property="snap:app_id" content="b0cbf6e1-ab6d-4c16-a7e1-b36995a6a38d"/> -->
     <!-- <meta property="snap:publisher_id" content="6657a894-7ddc-49a4-902e-94240dbb6577"/> -->
-    <meta property="snap:sticker" content="images/IMG_20211108_091027_192.jpg" />
+    <meta property="snap:sticker" content="https://snapchatoauthtest.herokuapp.com/images/IMG_20211108_091027_192.jpg" />
     <link rel="stylesheet" href="css/gallery.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="./css/bootstrap.min.css">
@@ -29,7 +29,7 @@
         <div class="row gy-4 row-cols-1 row-cols-sm-2 row-cols-md-3">
             <div class="col">
             <img src="images/IMG_20211108_091027_192.jpg" class="gallery-item" alt="gallery">
-            <div  class="snapchat-creative-kit-share" data-theme="dark" data-share-url="images/IMG_20211108_091027_192.jpg"></div>
+            <div  class="snapchat-creative-kit-share" data-theme="dark" data-share-url="https://snapchatoauthtest.herokuapp.com/images/IMG_20211108_091027_192.jpgimages/IMG_20211108_091027_192.jpg"></div>
             </div>
             <div class="col">
                 <img src="images/IMG_20211108_091023_868.jpg" class="gallery-item" alt="gallery">
