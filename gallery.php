@@ -28,11 +28,12 @@
     <div class="container-lg">
         <div class="row gy-4 row-cols-1 row-cols-sm-2 row-cols-md-3">
             <div class="col">
-                <img src="images/IMG_20211108_091023_868.jpg" class="gallery-item" alt="gallery">
+            <img src="images/IMG_20211108_091027_192.jpg" class="gallery-item" alt="gallery">
                 
             </div>
             <div class="col">
-                <img src="images/IMG_20211108_091027_192.jpg" class="gallery-item" alt="gallery">
+                <img src="images/IMG_20211108_091023_868.jpg" class="gallery-item" alt="gallery">
+                
                 <div  class="snapchat-creative-kit-share" data-theme="dark" data-share-url="https://snapchatoauthtest.herokuapp.com/gallery.php"></div>
             </div>
             <div class="col">
