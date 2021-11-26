@@ -42,35 +42,35 @@ if (isset($_SESSION['google']) && $_SESSION['google'] == 'active') {
    
     
 }else {
+    $client_id = '6657a894-7ddc-49a4-902e-94240dbb6577';
     $fields = [
         'token_type' => 'Bearer',
         'access_token' => $_SESSION['access_token'],
         'redirect_uri' => 'http://localhost/snapoauthtest/index.php',
-        'client_secret' => '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',
-        'scope' => 'https://auth.snapchat.com/oauth2/api/user.display_name https://auth.snapchat.com/oauth2/api/user.bitmoji.avatar',
+        'client_secret' => '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'
     ];
-    $fileds_string = http_build_query($fields);
+    $fields_string = http_build_query($fields);
 
     $headers = array(
-        "Content-Type: application/json",
-        "authorization: Bearer ".$_SESSION['access_token']        
+        "Content-Type: application/x-www-form-urlencoded",
+        "Authorization: Bearer ".$_SESSION['access_token']
     );
-    $headers_string = http_build_query($headers);
+   
 
     
     $chr = curl_init();
     curl_setopt($chr, CURLOPT_HTTPHEADER, $headers);
     curl_setopt($chr, CURLOPT_URL, 'https://kit.snapchat.com/v1/me');
     curl_setopt($chr, CURLOPT_POST, true);
-    curl_setopt($chr, CURLOPT_POSTFIELDS, $fileds_string);
+    curl_setopt($chr, CURLOPT_POSTFIELDS, $fields_string);
 
     curl_setopt($chr, CURLOPT_RETURNTRANSFER, true);
 
 
     $result = curl_exec($chr);
     
-    // $result = set_exception_handler();
-    var_dump($result) ;
+    
+    echo $result;
     curl_close($chr);
 
     // var_dump($result);

@@ -63,6 +63,7 @@
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="./css/bootstrap.min.css">
     <link rel="stylesheet" href="css/intlTelInput.css">
+    <link rel="stylesheet" href="css/gallery.css">
     <link rel="stylesheet" href="intl-tel-input-master/intl-tel-input-master/build/css/demo.css">
     <link
      rel="stylesheet"
@@ -73,8 +74,8 @@
 <body>
     
 
-            <div class="form-container">
-                <div class="form-group login-wrapper login_control" >
+            <div class="form-container" id="form-container">
+                <div class="form-group login-wrapper login_control" style="width: auto;" >
                     <h3 class="login_welcome">SPIFFY GALLERY</h3>
                     <div class=""></div>
                     
@@ -83,11 +84,11 @@
 
                     <p><a style="display: flex; justify-content: center; align-items: center;" class="btn btn-primary " href="#">Sign In</a></p>
                     
-                    <p class="divider"> or </p>
+                    <p class="divider" style="margin-bottom: 20px;"> or </p>
 
-                    
-                    <a href="verify.php" class="cashtokenlink snapverify-submit"><img src="./images/original-88018ccd-f944-427d-9642-d9aa85db2520.jpeg" alt=""> <p>Sign In with snapchat</p></a> 
-                    <a style=" margin-top: -10px;" href="?action=google-login" class="cashtokenlink snapverify-submit"><img style="width: 45px; margin-left: -5px;" src="./images/google-logo.jpg" alt=""> <p style="margin-left: 0;">Sign In with Google</p></a> 
+                    <div id="login-button"></div>
+                    <!-- <button id="login-buttons" style="background-color: yellow; border: none; height: 20px; border-radius:5px;" ><img src="./images/original-88018ccd-f944-427d-9642-d9aa85db2520.jpeg" alt=""> <p>Sign In with snapchat</p></button>  -->
+                    <!-- <a style=" margin-top: -10px;" href="?action=google-login" class="cashtokenlink snapverify-submit"><img style="width: 45px; margin-left: -5px;" src="./images/google-logo.jpg" alt=""> <p style="margin-left: 0;">Sign In with Google</p></a>  -->
                 </div>
             </div>
             
@@ -96,34 +97,35 @@
 
 
 
-
+       <script src="js/main.js"></script>
+       <script src="js/bootstrap.bundle.min.js"></script>
        <script src="js/index.js"></script>
-        <script src="js/intlTelInput.js"></script>
+        <!-- <script src="js/intlTelInput.js"></script> -->
         <script>
-    var input = document.querySelector("#phone");
-    window.intlTelInput(input, {
-      // allowDropdown: false,
-      // autoHideDialCode: false,
-      // autoPlaceholder: "off",
-      // dropdownContainer: document.body,
-      // excludeCountries: ["us"],
-      // formatOnDisplay: false,
-      // geoIpLookup: function(callback) {
-      //   $.get("http://ipinfo.io", function() {}, "jsonp").always(function(resp) {
-      //     var countryCode = (resp && resp.country) ? resp.country : "";
-      //     callback(countryCode);
-      //   });
-      // },
-      // hiddenInput: "full_number",
-      // initialCountry: "auto",
-      // localizedCountries: { 'de': 'Deutschland' },
-      // nationalMode: false,
-      // onlyCountries: ['us', 'gb', 'ch', 'ca', 'do'],
-      // placeholderNumberType: "MOBILE",
-      // preferredCountries: ['cn', 'jp'],
-      // separateDialCode: true,
-      utilsScript: "js/utils.js",
-    });
+    // var input = document.querySelector("#phone");
+    // window.intlTelInput(input, {
+    //   // allowDropdown: false,
+    //   // autoHideDialCode: false,
+    //   // autoPlaceholder: "off",
+    //   // dropdownContainer: document.body,
+    //   // excludeCountries: ["us"],
+    //   // formatOnDisplay: false,
+    //   // geoIpLookup: function(callback) {
+    //   //   $.get("http://ipinfo.io", function() {}, "jsonp").always(function(resp) {
+    //   //     var countryCode = (resp && resp.country) ? resp.country : "";
+    //   //     callback(countryCode);
+    //   //   });
+    //   // },
+    //   // hiddenInput: "full_number",
+    //   // initialCountry: "auto",
+    //   // localizedCountries: { 'de': 'Deutschland' },
+    //   // nationalMode: false,
+    //   // onlyCountries: ['us', 'gb', 'ch', 'ca', 'do'],
+    //   // placeholderNumberType: "MOBILE",
+    //   // preferredCountries: ['cn', 'jp'],
+    //   // separateDialCode: true,
+    //   utilsScript: "js/utils.js",
+    // });
   </script>
 </body>
 </html>
