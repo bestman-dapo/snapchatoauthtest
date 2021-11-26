@@ -169,3 +169,36 @@ body{
     font-size: 50px;
 }
 
+@media (max-width: 600px){
+    .welcome-div{
+        transform: translateX(-60px);
+        width: 500px;
+        max-width: 500px;
+        margin: 300px auto 0;
+        font-size: 20px;
+        color: white;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+    .welcome-div h1{
+        font-size: 20px;
+        max-width: 500px;
+    }
+    .welcome-div h3{
+        font-size: 15px;
+        max-width: 500px;
+    }
+    .index-header .logo{
+        color: wheat;
+        font-size: 25px;
+        margin-left: -10px;
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        cursor: pointer;
+    }
+    .index-header-link{
+        display: none;
+    }
+}
